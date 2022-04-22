@@ -1,4 +1,4 @@
-Tienda de fotos
+# Tienda de fotos
 La idea del proyecto es crear una pagina donde se puedan vender imagenes sacadas en un evento (estilo Adobe Stock).
 
 
