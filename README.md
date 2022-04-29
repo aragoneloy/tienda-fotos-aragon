@@ -1,3 +1,7 @@
+# Tienda de fotos
+La idea del proyecto es crear una pagina donde se puedan vender imagenes sacadas en un evento (estilo Adobe Stock).
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
