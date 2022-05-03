@@ -1,10 +1,21 @@
-
-import './App.css';
-import Navbar from './components/NavBar';
+import NavbarComp from './components/NavBar';
+import { ItemListContainer } from './components/ItemLIstContainer/ItemListContainer';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 export default function App() {
   
-  return <Navbar />;
+  return(
+      <>
+        <NavbarComp />
+
+        <ItemListContainer></ItemListContainer>
+      </>
+      
+
+
+  ) 
 }
 
