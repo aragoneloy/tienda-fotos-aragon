@@ -12,10 +12,8 @@ export default function App() {
       <>
         <NavbarComp />
 
-        <ItemListContainer title='Hola mundo!'>
-          <ItemCount initial='1'></ItemCount>
-        </ItemListContainer>
-
+        <ItemListContainer title='Hola mundo!'></ItemListContainer>
+        <ItemCount initial='1' stock={10}></ItemCount>
         
       </>
       
