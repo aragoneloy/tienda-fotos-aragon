@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { prod } from '../../productos.js';
-import Container from 'react-bootstrap/Container';
 
-import ItemList from '../ItemList/ItemList.js';
+import Container from 'react-bootstrap/Container';
+import { prod } from '../../productos'
+
 import { Row } from 'react-bootstrap';
 
 
+import ItemList from '../ItemList/ItemList.js';
 
 
 export const ItemListContainer = () => {
@@ -41,5 +42,5 @@ export const ItemListContainer = () => {
     )
     }
 
-   
+
 

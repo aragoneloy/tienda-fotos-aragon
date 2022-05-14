@@ -1,7 +1,7 @@
 import React from 'react'
 import Item from '../Item/Item'
 import "./itemList.css"
-// import Col from 'react-bootstrap/Col';
+
 const ItemList = ({ items }) => {
   return (
     
