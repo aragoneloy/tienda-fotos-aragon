@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import {Navbar, Nav, NavDropdown, Container} from 'react-bootstrap'
-import { CartWidget } from '../cart/CartWidget'
+import '../NavBar/navBar.css'
 
+import React, { Component } from 'react';
+import {Navbar, Nav, Container} from 'react-bootstrap'
+import { CartWidget } from '../cart/CartWidget'
+import { Link } from 'react-router-dom'
 
 export default class NavbarComp extends Component {
     
@@ -10,7 +12,7 @@ export default class NavbarComp extends Component {
             <div>
                 <Navbar bg="dark" expand="lg" variant='dark'>
                     <Container fluid>
-                        <Navbar.Brand href="#">LightPaints</Navbar.Brand>
+                        <Navbar.Brand><Link className='nav-link' to="/">LightPaints</Link></Navbar.Brand>
                         <Navbar.Toggle aria-controls="navbarScroll" />
                         <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -19,15 +21,11 @@ export default class NavbarComp extends Component {
                             navbarScroll
                         >
                             
-                            <Nav.Link href="#action2">Bio</Nav.Link>
-                            <NavDropdown title="Tienda de fotos" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="#action3">Eventos</NavDropdown.Item>
-                            <NavDropdown.Item href="#action4">Decorativas</NavDropdown.Item>
+                            <Nav.Link href="#action2"><Link className='nav-link' to="/about">Bio</Link></Nav.Link>
                             
-                            </NavDropdown>
-                            <Nav.Link href="#" >
-                            Contacto
-                            </Nav.Link>
+                            
+                            <Nav.Link><Link className='nav-link' to="/contact">Contacto</Link></Nav.Link>   
+                            
                         </Nav>
                        
                         <CartWidget></CartWidget>

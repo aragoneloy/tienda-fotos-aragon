@@ -9,8 +9,7 @@ import { Row } from 'react-bootstrap';
 
 import ItemList from '../ItemList/ItemList.js';
 
-
-export const ItemListContainer = () => {
+const ItemListContainer = () => {
     const [items, setItems] = useState([])
 
     useEffect(() => {
@@ -39,8 +38,8 @@ export const ItemListContainer = () => {
                 </Row>
             </Container>
         
-    )
+    );
     }
 
-
+export default ItemListContainer;
 

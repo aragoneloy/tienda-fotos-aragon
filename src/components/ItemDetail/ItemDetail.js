@@ -1,12 +1,14 @@
 import React from 'react';
 import './ItemDetail.css'
+
 //material imports
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
+
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
 import Image from 'react-bootstrap/Image'
+import { ItemCount } from '../ItemCount/ItemCount';
 const ItemDetail = ({ item }) => {
     const { name, price, image, description} = item;
     
@@ -23,7 +25,7 @@ const ItemDetail = ({ item }) => {
                         <h1>{name}</h1>
                         <h3>${price}</h3>            
                         <p>{description}</p>
-                        <Button variant="contained">Comprar</Button>
+                        <ItemCount initial={1} stock={10}/>
                     </Grid>    
                         
                     
