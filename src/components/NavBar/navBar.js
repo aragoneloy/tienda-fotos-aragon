@@ -2,7 +2,7 @@ import '../NavBar/navBar.css'
 
 import React, { Component } from 'react';
 import {Navbar, Nav, Container} from 'react-bootstrap'
-import { CartWidget } from '../cart/CartWidget'
+import CartWidget from '../cart/CartWidget'
 import { Link } from 'react-router-dom'
 
 export default class NavbarComp extends Component {

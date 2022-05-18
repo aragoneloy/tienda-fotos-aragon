@@ -1,13 +1,13 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import ItemList from '../ItemList/ItemList.js';
+import { prod } from '../../productos';
 
+//React-bootstrap
 import Container from 'react-bootstrap/Container';
-import { prod } from '../../productos'
-
 import { Row } from 'react-bootstrap';
 
 
-import ItemList from '../ItemList/ItemList.js';
+
 
 const ItemListContainer = () => {
     const [items, setItems] = useState([])

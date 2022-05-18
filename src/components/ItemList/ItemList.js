@@ -2,6 +2,7 @@ import React from 'react'
 import Item from '../Item/Item'
 import "./itemList.css"
 
+//React-router
 import { Link } from 'react-router-dom'
 const ItemList = ({ items }) => {
   return (
@@ -19,5 +20,5 @@ const ItemList = ({ items }) => {
   )
 }
 
-export default ItemList
+export default ItemList;
 

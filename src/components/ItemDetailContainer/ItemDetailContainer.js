@@ -8,15 +8,12 @@ import { Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
 
-export const ItemDetailContainer = () => { 
+const ItemDetailContainer = () => { 
     
     let id = useParams();
     
-    let itemID = id.id - 1
-    
-    
-
-
+    let itemID = id.id - 1 //le resto 1 ya que los indices de arrays de objetos comienzan en 0.
+  
     const [item, getItem] = useState([])
     useEffect(() => {
         
@@ -47,4 +44,4 @@ export const ItemDetailContainer = () => {
 
 }
 
-
+export default ItemDetailContainer;

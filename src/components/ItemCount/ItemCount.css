@@ -1,0 +1,14 @@
+.item-count{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.item-quantity{
+    margin: 0;
+    padding: 5px
+}
+
+.button-group{
+    align-self: space-between;
+}
