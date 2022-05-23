@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ItemDetail.css'
 
 //material imports
@@ -11,8 +11,17 @@ import Box from '@mui/material/Box';
 import Image from 'react-bootstrap/Image'
 
 import ItemCount from '../ItemCount/ItemCount';
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 const ItemDetail = ({ item }) => {
     const { name, price, image, description} = item;
+    
+    const [value, setValue] = useState(0)
+
+    console.log(value)
+    
+
+   
     
     return (
         <Box sx={{
@@ -28,7 +37,9 @@ const ItemDetail = ({ item }) => {
                         <h1>{name}</h1>
                         <h3>${price}</h3>            
                         <p>{description}</p>
-                        <ItemCount initial={1} stock={10}/>
+                        <ItemCount initial={1} stock={10} onAdd={setValue}/>
+                        
+                        <Link to='/cart'><Button variant="outlined" color="success" className='finish-sale-btn' >Terminar compra</Button></Link>
                     </Grid>    
 
                 </Grid>

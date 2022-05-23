@@ -10,28 +10,43 @@ import IconButton from '@mui/material/IconButton';
 
 
 const ItemCount = ({stock, initial, onAdd}) => {
-    const [count, setCount] = useState(initial)
     
+    const [count, setCount] = useState(initial)
+      
+
+
     const plusClick = () => {
         setCount(count < stock ? count + 1 : count)
+ 
+        
     }
     const minusClick = () => {
         setCount(count < 1 ? count : count - 1)
+  
+        
     }
+
+    
+    
+    function handleAdd() {
+        onAdd(count)
+    } 
+    
+    
     return ( 
         <div className='item-count'>
             <ButtonGroup disableElevation variant="contained" aria-label="item-count" className='button-group'>
-                <IconButton  onClick={minusClick} aria-label="delete">
+                <IconButton  onClick={minusClick} aria-label="restar producto">
                     <RemoveIcon />
                 </IconButton>
                 
-                <p className='item-quantity'>{count}</p>
-                <IconButton onClick={plusClick} aria-label="delete">
+                <p className='item-quantity' >{count}</p>
+                <IconButton onClick={plusClick} aria-label="agregar producto">
                     <AddIcon />
                 </IconButton>
             </ButtonGroup>
 
-            <Button variant="contained" disabled={stock === 0}  onClick={onAdd}>Agregar al carrito</Button>
+            <Button variant="contained" disabled={stock === 0}  onClick={handleAdd}>Agregar al carrito</Button>
         </div>
      );
 }

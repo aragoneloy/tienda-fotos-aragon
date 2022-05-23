@@ -10,9 +10,9 @@ import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = () => { 
     
-    let id = useParams();
+    let  id = useParams(); 
+    let itemID = id.id - 1//le resto 1 ya que los indices de arrays de objetos comienzan en 0.
     
-    let itemID = id.id - 1 //le resto 1 ya que los indices de arrays de objetos comienzan en 0.
   
     const [item, getItem] = useState([])
     useEffect(() => {
@@ -31,7 +31,7 @@ const ItemDetailContainer = () => {
             }
             )
         }, 2000)
-   },[]); 
+   },[itemID]); 
 
    return (
     <Container>
