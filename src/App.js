@@ -14,6 +14,8 @@ import About from './views/About/About';
 import Contact from './views/Contact/Contact';
 import Error from './views/Error';
 import ItemDetailView from './views/ItemDetailView/ItemDetailView';
+import { ItemsProvider } from './Context/ItemContext';
+import { CartProvider } from './Context/CartContext';
 
 const App = () => {
   
@@ -21,20 +23,23 @@ const App = () => {
   
   return (
     
-
-    <Router>
-     <>
-        <NavbarComp />
-        <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/contact' element={<Contact />} />
-            <Route path='/detail/:id' element={<ItemDetailView />}/>
-            <Route path='*' element={<Error/>}/>
-        </Routes>
-        
-      </>
-    </Router> 
+    <ItemsProvider>
+      <CartProvider>
+        <Router>
+        <>
+            <NavbarComp />
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/contact' element={<Contact />} />
+                <Route path='/detail/:id' element={<ItemDetailView />}/>
+                <Route path='*' element={<Error/>}/>
+            </Routes>
+            
+          </>
+        </Router> 
+      </CartProvider>
+    </ItemsProvider>
    );
 }
  

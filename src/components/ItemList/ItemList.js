@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Item from '../Item/Item'
 import "./itemList.css"
+
+import { ItemsContext } from '../../Context/ItemContext'
 
 //React-router
 import { Link } from 'react-router-dom'
 const ItemList = ({ items }) => {
+  
+  
   return (
     
       <div className='item-list'>
-        {items.map(iteracion => {
+        {items.map(item => {
            return (
-            <Link to={`/detail/${iteracion.id}`}>
-              <Item key ={iteracion.id} item={iteracion} />
+            <Link to={`/detail/${item.id}`}>
+              <Item key={item.id} item={item} />
             </Link>
         )} )}
       </div>

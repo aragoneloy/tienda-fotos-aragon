@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import ItemList from '../ItemList/ItemList.js';
-import { prod } from '../../productos';
+
+
+import { ItemsContext } from '../../Context/ItemContext.js';
 
 //React-bootstrap
 import Container from 'react-bootstrap/Container';
@@ -10,13 +12,13 @@ import { Row } from 'react-bootstrap';
 
 
 const ItemListContainer = () => {
-    const [items, setItems] = useState([])
+    const [items, setItems] = useContext(ItemsContext)
 
     useEffect(() => {
         setTimeout(() => {
    
         const data = new Promise((resolve, reject) => {
-            resolve(prod);
+            resolve(items);
         })
         data.then(data => {
             setItems(data)}
@@ -29,7 +31,7 @@ const ItemListContainer = () => {
     }, 2000)
     },[]);
         
-        
+        console.log('data', items)
         
         return (
             <Container>

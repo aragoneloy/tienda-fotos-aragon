@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../ItemCount/ItemCount.css'
-
+import { CartContext } from '../../Context/CartContext';
 //Material UI
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
@@ -9,7 +9,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import IconButton from '@mui/material/IconButton';
 
 
-const ItemCount = ({stock, initial, onAdd}) => {
+const ItemCount = ({item, stock, initial, onAdd}) => {
+    const { addItem } = useContext(CartContext)
     
     const [count, setCount] = useState(initial)
       
@@ -29,7 +30,12 @@ const ItemCount = ({stock, initial, onAdd}) => {
     
     
     function handleAdd() {
-        onAdd(count)
+        return(
+            onAdd(count)
+            
+
+        )
+        
     } 
     
     

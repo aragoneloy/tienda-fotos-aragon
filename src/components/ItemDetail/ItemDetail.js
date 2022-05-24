@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './ItemDetail.css'
+import { CartContext } from '../../Context/CartContext';
 
 //material imports
 import Container from '@mui/material/Container';
@@ -14,14 +15,15 @@ import ItemCount from '../ItemCount/ItemCount';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 const ItemDetail = ({ item }) => {
+    const [ addItem ] = useContext(CartContext);
+    
     const { name, price, image, description} = item;
     
-    const [value, setValue] = useState(0)
+    const [quantity, setQuantity] = useState(0)
 
-    console.log(value)
+
+    console.log(quantity)
     
-
-   
     
     return (
         <Box sx={{
@@ -37,9 +39,9 @@ const ItemDetail = ({ item }) => {
                         <h1>{name}</h1>
                         <h3>${price}</h3>            
                         <p>{description}</p>
-                        <ItemCount initial={1} stock={10} onAdd={setValue}/>
+                        <ItemCount item={ {item} } initial={1} stock={10} onAdd={() => {setQuantity(); addItem({item}, quantity)}} />
                         
-                        <Link to='/cart'><Button variant="outlined" color="success" className='finish-sale-btn' >Terminar compra</Button></Link>
+                        <Link to='/cart'><Button variant="outlined" color="success" className='finish-sale-btn'  >Terminar compra</Button></Link>
                     </Grid>    
 
                 </Grid>
