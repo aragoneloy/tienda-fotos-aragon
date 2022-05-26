@@ -9,8 +9,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import IconButton from '@mui/material/IconButton';
 
 
-const ItemCount = ({item, stock, initial, onAdd}) => {
-    const { addItem } = useContext(CartContext)
+const ItemCount = ({item, stock, initial, onAdd, addToCart}) => {
+    // const { addItem } = useContext(CartContext)
     
     const [count, setCount] = useState(initial)
       
@@ -30,11 +30,8 @@ const ItemCount = ({item, stock, initial, onAdd}) => {
     
     
     function handleAdd() {
-        return(
-            onAdd(count)
-            
-
-        )
+        onAdd(count)
+        addToCart({item})
         
     } 
     
@@ -55,6 +52,6 @@ const ItemCount = ({item, stock, initial, onAdd}) => {
             <Button variant="contained" disabled={stock === 0}  onClick={handleAdd}>Agregar al carrito</Button>
         </div>
      );
-}
+    }
  
 export default ItemCount;

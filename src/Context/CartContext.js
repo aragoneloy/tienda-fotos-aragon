@@ -3,15 +3,18 @@ import React, { createContext, useState } from 'react';
 export const CartContext = createContext();
 
 //state que le pasamos al usestate
-const initialState = []
+const cartInitialState = []
 
 export const CartProvider = ({ children }) => {
-    const [cartItems, setCartItems] = useState(initialState)
+    const [cartItems, setCartItems] = useState(cartInitialState)
     
-    const addItem = (item, quantity) => {
-        setCartItems({item}, quantity)
+    function addItem (item, quantity) {
+        
+
+        setCartItems([...cartItems, item, quantity])
+        
     }
-    
+    console.log(cartItems)
     
 
     return(

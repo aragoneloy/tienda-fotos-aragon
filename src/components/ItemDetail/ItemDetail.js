@@ -21,8 +21,13 @@ const ItemDetail = ({ item }) => {
     
     const [quantity, setQuantity] = useState(0)
 
+    function addToCart() {
+        addItem(item, quantity)
+    
+    }
+    
+    
 
-    console.log(quantity)
     
     
     return (
@@ -39,7 +44,7 @@ const ItemDetail = ({ item }) => {
                         <h1>{name}</h1>
                         <h3>${price}</h3>            
                         <p>{description}</p>
-                        <ItemCount item={ {item} } initial={1} stock={10} onAdd={() => {setQuantity(); addItem({item}, quantity)}} />
+                        <ItemCount item={ {item} } initial={1} stock={10} onAdd={setQuantity} addToCart={addToCart} />
                         
                         <Link to='/cart'><Button variant="outlined" color="success" className='finish-sale-btn'  >Terminar compra</Button></Link>
                     </Grid>    
