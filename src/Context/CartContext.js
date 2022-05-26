@@ -14,7 +14,8 @@ export const CartProvider = ({ children }) => {
         setCartItems([...cartItems, item, quantity])
         
     }
-    console.log(cartItems)
+    
+    
     
 
     return(

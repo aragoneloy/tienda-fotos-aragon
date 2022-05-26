@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import '../ItemCount/ItemCount.css'
-import { CartContext } from '../../Context/CartContext';
+
 //Material UI
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 
 
 const ItemCount = ({item, stock, initial, onAdd, addToCart}) => {
-    // const { addItem } = useContext(CartContext)
+   
     
     const [count, setCount] = useState(initial)
       

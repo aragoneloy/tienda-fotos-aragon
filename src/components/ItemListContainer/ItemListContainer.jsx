@@ -12,7 +12,7 @@ import { Row } from 'react-bootstrap';
 
 
 const ItemListContainer = () => {
-    const [items, setItems] = useContext(ItemsContext)
+    const [ items, setItems ] = useContext(ItemsContext)
 
     useEffect(() => {
         setTimeout(() => {
@@ -29,9 +29,9 @@ const ItemListContainer = () => {
         }
         )
     }, 2000)
-    },[]);
+    },[items, setItems]);
         
-        console.log('data', items)
+        
         
         return (
             <Container>
