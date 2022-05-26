@@ -11,9 +11,11 @@ export const CartProvider = ({ children }) => {
     function addItem (item, quantity) {
         
 
-        setCartItems([...cartItems, item, quantity])
+        setCartItems([...cartItems, {item, quantity}])
         
     }
+
+    console.log(cartItems)
     
     
     
