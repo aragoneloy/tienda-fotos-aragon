@@ -1,44 +1,64 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { prod } from '../../productos.js';
+import { useState, useEffect, useContext } from 'react';
+import { ItemsContext } from '../../Context/ItemContext';
 import ItemDetail from '../ItemDetail/ItemDetail'
+
+
 //React-bs components
 import Container from 'react-bootstrap/Container';
 import { Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+// mui components
+import { Box } from '@mui/system';
+import { LinearProgress } from '@mui/material';
 
 
 const ItemDetailContainer = () => { 
-    
-    let  id = useParams(); 
-    let itemID = id.id - 1//le resto 1 ya que los indices de arrays de objetos comienzan en 0.
+    const { items } = useContext(ItemsContext);
+    const [loading, setLoading] = useState(true);
+    const [item, setItem] = useState({});
+    const { id } = useParams();
+     //le resto 1 ya que los indices de arrays de objetos comienzan en 0.
     
   
-    const [item, getItem] = useState([])
-    useEffect(() => {
-        
-        setTimeout(() => {
     
-            const data = new Promise((resolve, reject) => {
-                resolve(prod[itemID]);
-            })
+    useEffect(() => {
+        setLoading(true);
+        
+        const data = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(items[id - 1]);
+            }, 1000);
+        });
+                
+            
             data.then(data => {
-                getItem(data)}
+                setItem(data)}
 
             )
             data.catch(err =>{
                 console.log(err)
             }
             )
-        }, 2000)
-   },[itemID]); 
+            data.finally(() => {
+                setLoading(false);
+            })
+            
+        }, [id]);
+    
 
-   return (
-    <Container>
+   return ( loading ? (
+   
+   <Box><LinearProgress/></Box>
+   
+   ) : (
+   
+   <Container>
         <Row >
            <ItemDetail item={item}/>
         </Row>
-    </Container>
+    </Container>) 
+
 
 )
 

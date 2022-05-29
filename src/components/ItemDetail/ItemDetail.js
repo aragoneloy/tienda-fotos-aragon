@@ -17,19 +17,18 @@ import { Link } from 'react-router-dom';
 const ItemDetail = ({ item }) => {
     const { addItem } = useContext(CartContext);
     
-    const { name, price, image, description} = item;
+    const { name, price, image, description, stock } = item;
     
-    const [quantity, setQuantity] = useState(0)
+    const [addedToCart, setAddedToCart] = useState(false);
 
 
-    
-    function addToCart() {
-        
-        addItem(item, quantity)
-        
+
+    const onAdd = (item, count) => {
+        setAddedToCart(true)
+        addItem(item, count)
     }
     
-    
+   
 
     
     
@@ -47,9 +46,15 @@ const ItemDetail = ({ item }) => {
                         <h1>{name}</h1>
                         <h3>${price}</h3>            
                         <p>{description}</p>
-                        <ItemCount item={ {item} } initial={1} stock={10} onAdd={setQuantity} addToCart={addToCart} />
                         
-                        <Link to='/cart'><Button variant="outlined" color="success" className='finish-sale-btn'  >Terminar compra</Button></Link>
+                        <div>
+                            { addedToCart ? 
+                            (<Link to='/cart'><Button variant="outlined" color="success" className='finish-sale-btn'  >Terminar compra</Button></Link>
+                            ) : ( 
+                            <ItemCount item={ {item} } initial={1} stock={stock} onAdd={onAdd}  />) }
+                            
+                        </div>
+                        
                     </Grid>    
 
                 </Grid>

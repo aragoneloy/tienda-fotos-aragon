@@ -10,19 +10,34 @@ export const CartProvider = ({ children }) => {
     
     function addItem (item, quantity) {
         
-
+        const itemIndex = cartItems.findIndex(cartItem => cartItem.item.id === item.id)
+        
+        if(itemIndex === -1) {
+        
         setCartItems([...cartItems, {item, quantity}])
         
+    } else {   
+
+        const newCartItems = [...cartItems]
+        newCartItems[itemIndex].quantity += quantity
+        setCartItems(newCartItems)
+    
+    
+    }
     }
 
-    console.log(cartItems)
-    
-    
-    
-
+    function removeItem (item) {
+        const itemIndex = cartItems.findIndex(cartItem => cartItem.item.id === item.id)
+        const newCartItems = [...cartItems]
+        newCartItems.splice(itemIndex, 1)
+        setCartItems(newCartItems)
+    }
+    function clearCart () {
+        setCartItems([])
+    }
     return(
-        <CartContext.Provider value={{cartItems, setCartItems, addItem}}>
+        <CartContext.Provider value={{cartItems, setCartItems, addItem, removeItem, clearCart}}>
             {children}
         </CartContext.Provider>
     )
-}
+    }    
