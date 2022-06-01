@@ -1,10 +1,12 @@
-import { Button } from '@mui/material';
 import React from 'react';
 import { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import "././cart.css"
 import { CartContext } from '../../Context/CartContext';
-
+import { MdDelete } from 'react-icons/md';
+import { Button } from '@mui/material';
 const Cart = () => {
-    const { cartItems, setCartItems, addItem, removeItem, clearCart } = useContext(CartContext);
+    const { cartItems, removeItem, clearCart } = useContext(CartContext);
     const [cartTotal, setCartTotal] = useState(0)
     const [cartQuantity, setCartQuantity] = useState(0)
     const [loading, setLoading] = useState(true)
@@ -28,7 +30,7 @@ const Cart = () => {
         })
         setCartTotal(total)
         setCartQuantity(quantity)
-        
+
         
         
     })
@@ -41,31 +43,36 @@ const Cart = () => {
 
     }, [cartItems])
 
-   console.log()
     
     
-    return ( 
+    return ( cartItems.length !== 0 ? (
         <>
-
-        <h1>Cart</h1>
-        {cartItems.map(item => {
-           return (
-            <div>
-                <p>Producto: {item.item.name}</p>
-                <p>Precio: {item.item.price}</p>
-                <p>Cantidad: {item.count}</p>
-                <Button onClick={() => removeItem(item.item)}>-</Button>
+           <div className='cart-container'>
+                <h1>Carrito</h1>
+                {cartItems.map(item => {
+                    return (
+                        <div key={item.item.id}>
+                            <p>Producto: {item.item.name}</p>
+                            <p>Precio: {item.item.price}</p>
+                            <p>Cantidad: {item.count}</p>
+                            <h4><Button onClick={() => removeItem(item.item)} size='large'><MdDelete/></Button></h4>
+                        </div>
+                    )} 
+                )}
             </div>
-        )} )}
-
-        <h2>Total: {cartTotal}</h2>
-        <h2>Quantity: {cartQuantity}</h2>
-        <Button onClick={clearCart}>Vaciar carrito</Button>
-           
+            <div className='cart-total'>
+                <h2>Total: {cartTotal}</h2>
+                <h2>Quantity: {cartQuantity}</h2>
+                <Button onClick={clearCart}>Vaciar carrito</Button>
+            </div>
+            
 
         
-        </>
-     );
-}
+        </> ) : (
+        <div>
+            <Link to={'/'}><Button variant='contained' >Ir a la tienda</Button></Link>
+        </div>  )
+     
+)}
  
 export default Cart;

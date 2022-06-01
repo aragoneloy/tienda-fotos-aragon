@@ -7,10 +7,11 @@ const cartInitialState = []
 
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState(cartInitialState)
-    const [cartQuantity, setCartQuantity] = useState(0)
+    
     
     function addItem (item, count) {
-        let quantity = 0
+        
+
         
         const itemIndex = cartItems.findIndex(cartItem => cartItem.item.id === item.id)
         
@@ -18,20 +19,19 @@ export const CartProvider = ({ children }) => {
         
         setCartItems([...cartItems, {item, count}])
         
+        
+
     } else {   
 
         const newCartItems = [...cartItems]
         newCartItems[itemIndex].count += count
         setCartItems(newCartItems)
-    
-    
+        
+        
     } 
+   
+   
     
-    
-    cartItems.forEach(item => {
-        quantity += item.item.count
-    })
-    setCartQuantity(quantity)
     }
 
     function removeItem (item) {
@@ -39,16 +39,19 @@ export const CartProvider = ({ children }) => {
         const newCartItems = [...cartItems]
         newCartItems.splice(itemIndex, 1)
         setCartItems(newCartItems)
+        
     }
     function clearCart () {
         setCartItems([])
+        
     }
-
+    
+    
    
-
-    console.log(cartQuantity)
+       
+    
     return(
-        <CartContext.Provider value={{cartItems, setCartItems, addItem, removeItem, clearCart, cartQuantity}}>
+        <CartContext.Provider value={{cartItems, setCartItems, addItem, removeItem, clearCart }} >
             {children}
         </CartContext.Provider>
     )
