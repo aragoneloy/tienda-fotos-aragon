@@ -47,24 +47,25 @@ const Cart = () => {
     
     return ( cartItems.length !== 0 ? (
         <>
-           <div className='cart-container'>
-                <h1>Carrito</h1>
-                {cartItems.map(item => {
-                    return (
-                        <div key={item.item.id}>
-                            <p>Producto: {item.item.name}</p>
-                            <p>Precio: {item.item.price}</p>
-                            <p>Cantidad: {item.count}</p>
-                            <h4><Button onClick={() => removeItem(item.item)} size='large'><MdDelete/></Button></h4>
-                        </div>
-                    )} 
-                )}
+            <div></div>
+            <div className='cart-container'>
+                    <h1>Carrito</h1>
+                    {cartItems.map(item => {
+                        return (
+                            <div key={item.item.id}>
+                                <p>Producto: {item.item.name}</p>
+                                <p>Precio: {item.item.price}</p>
+                                <p>Cantidad: {item.count}</p>
+                                <h4><Button onClick={() => removeItem(item.item)} size='large'><MdDelete/></Button></h4>
+                            </div>
+                        )} 
+                    )}
             </div>
-            <div className='cart-total'>
-                <h2>Total: {cartTotal}</h2>
-                <h2>Quantity: {cartQuantity}</h2>
-                <Button onClick={clearCart}>Vaciar carrito</Button>
-            </div>
+                <div className='cart-total'>
+                    <h2>Total: {cartTotal}</h2>
+                    <h2>Quantity: {cartQuantity}</h2>
+                    <Button onClick={clearCart}>Vaciar carrito</Button>
+                </div>
             
 
         

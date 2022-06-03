@@ -11,36 +11,34 @@ import { Row } from 'react-bootstrap';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 
-
-
+//firebase
+import { db } from '../../firebase/firebaseConfig'
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 const ItemListContainer = () => {
-    const { items, setItems } = useContext(ItemsContext)
+    const { items, setItems } = useContext(ItemsContext);
     const [loading, setLoading] = useState(true);
     
-    useEffect(() => {
-        setLoading(true);
-        
    
-        const data = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(items);
-                }, 2000);
+    useEffect(() => {
+        const getItems = async () => {
+            const q = query(collection(db, "products"));
+            const docs = [];
+            const querySnapshot = await getDocs(q);
+            
+            querySnapshot.forEach((doc) => {
+            docs.push({...doc.data(), id: doc.id});
+            setItems(docs);
+            
+        });   
+        console.log(docs)
+    }
+    getItems()
+    setTimeout(() => {
+        setLoading(false);
+    }, 1000);
+    }, [])
 
-        });
-        data.then(data => {
-            setItems(data)}
-
-        )
-        data.catch(err =>{
-            console.log(err)
-        }
-        )
-        data.finally(() => {
-            setLoading(false);
-        })
-    },[items] )
-    
         
         
         

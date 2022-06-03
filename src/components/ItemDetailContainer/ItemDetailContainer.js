@@ -3,7 +3,9 @@ import { useState, useEffect, useContext } from 'react';
 import { ItemsContext } from '../../Context/ItemContext';
 import ItemDetail from '../ItemDetail/ItemDetail'
 
-
+//firebase
+import { db } from '../../firebase/firebaseConfig'
+import { collection, query, where, getDocs, documentId } from "firebase/firestore";
 //React-bs components
 import Container from 'react-bootstrap/Container';
 import { Row } from 'react-bootstrap';
@@ -14,38 +16,33 @@ import { LinearProgress } from '@mui/material';
 
 
 const ItemDetailContainer = () => { 
-    const { items } = useContext(ItemsContext);
+    
     const [loading, setLoading] = useState(true);
-    const [item, setItem] = useState({});
+    const [item, setItem] = useState([]);
     const { id } = useParams();
-     //le resto 1 ya que los indices de arrays de objetos comienzan en 0.
+     
     
   
     
     useEffect(() => {
-        setLoading(true);
-        
-        const data = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(items[id - 1]);
-            }, 1000);
-        });
+       const getItem = async () => {
+            const q = query(collection(db, "products"), where(documentId(), "==", id));
+            const docs = []
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+                docs.push({...doc.data(), id: doc.id});
+                setItem(docs);
                 
-            
-            data.then(data => {
-                setItem(data)}
-
-            )
-            data.catch(err =>{
-                console.log(err)
-            }
-            )
-            data.finally(() => {
-                setLoading(false);
-            })
-            
-        }, [id]);
-    
+            });  
+             
+        
+    }
+    getItem()
+    setTimeout(() => {
+        setLoading(false);
+    }, 1000);
+    }, [id])
+    console.log(item)
 
    return ( loading ? (
    

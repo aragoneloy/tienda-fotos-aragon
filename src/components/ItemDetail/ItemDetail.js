@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 const ItemDetail = ({ item }) => {
     const { addItem } = useContext(CartContext);
     
-    const { name, price, image, description, stock } = item;
+    const [{ name, price, stock, image, description }] = item;
     
     const [addedToCart, setAddedToCart] = useState(false);
 
