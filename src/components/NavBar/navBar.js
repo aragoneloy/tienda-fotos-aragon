@@ -5,11 +5,21 @@ import {Navbar, Nav, Container} from 'react-bootstrap'
 import CartWidget from '../cart/CartWidget'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../Context/CartContext'
+import { Button } from '@mui/material';
+import  { MenuItem } from '@mui/material';
+import { Menu } from '@mui/material';
 
 const NavbarComp = () => {
     const { cartItems } = useContext(CartContext);
    
-   
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
     return ( cartItems.length > 0 ? (
         <div>
                         <Navbar bg="dark" expand="lg" variant='dark'>
@@ -27,9 +37,32 @@ const NavbarComp = () => {
                                     
                                     
                                     <Nav.Link><Link className='nav-link' to="/contact">Contacto</Link></Nav.Link>   
-                                    
+                                    <Button
+                                    id="basic-button"
+                                    aria-controls={open ? 'basic-menu' : undefined}
+                                    aria-haspopup="true"
+                                    aria-expanded={open ? 'true' : undefined}
+                                    onClick={handleClick}
+                                >
+                                    Categorias
+                                </Button>
+                                <Menu
+                                    id="basic-menu"
+                                    anchorEl={anchorEl}
+                                    open={open}
+                                    onClose={handleClose}
+                                    MenuListProps={{
+                                    'aria-labelledby': 'basic-button',
+                                    }}
+                                >
+                                    <MenuItem onClick={handleClose}>Naturaleza</MenuItem>
+                                    <MenuItem onClick={handleClose}>Street photography</MenuItem>
+                                    <MenuItem onClick={handleClose}>Abstracto</MenuItem>
+                                </Menu>
+                               
                                 </Nav>
-                            
+                                
+
                                 <CartWidget></CartWidget>
                                 
                                 </Navbar.Collapse>
@@ -52,7 +85,40 @@ const NavbarComp = () => {
                         
                         
                         <Nav.Link><Link className='nav-link' to="/contact">Contacto</Link></Nav.Link>   
-                        
+                        <Button
+                            id="basic-button"
+                            aria-controls={open ? 'basic-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
+                            onClick={handleClick}
+                        >
+                            Categorias
+                    </Button>
+                    <Menu
+                            id="basic-menu"
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                            MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                            }}
+                        >
+                            <MenuItem onClick={handleClose}>
+                                <Link to='/category/nature'>
+                                    Naturaleza
+                                </Link>
+                            </MenuItem>
+                            <MenuItem onClick={handleClose}>
+                                <Link to='/category/urban'>
+                                    Street photography
+                                </Link>
+                            </MenuItem>
+                            <MenuItem onClick={handleClose}>
+                                <Link to='/category/abstract'>
+                                    Abstracto
+                                </Link>
+                            </MenuItem>
+                    </Menu>
                     </Nav>
                 
                     

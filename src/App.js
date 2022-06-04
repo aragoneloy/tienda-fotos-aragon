@@ -17,7 +17,7 @@ import ItemDetailView from './views/ItemDetailView/ItemDetailView';
 import { ItemsProvider } from './Context/ItemContext';
 import { CartProvider } from './Context/CartContext';
 import Cart from './components/cart/Cart';
-
+import Category from './views/Category/Category';
 const App = () => {
   
 
@@ -35,6 +35,7 @@ const App = () => {
                 <Route path='/contact' element={<Contact />} />
                 <Route path='category/:catId' element={<ItemDetailView />} />
                 <Route path='/detail/:id' element={<ItemDetailView />}/>
+                <Route path='/category/:category' element={<Category />}/>
                 <Route path='/cart' element={<Cart />} />
                 <Route path='*' element={<Error/>}/>
             </Routes>
