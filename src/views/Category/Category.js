@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { useContext, useState, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import ItemList from '../../components/ItemList/ItemList';
+import { useState, useEffect } from 'react';
+
+
 import Item from '../../components/Item/Item';
 //firebase
 import { db } from '../../firebase/firebaseConfig'
@@ -35,9 +35,9 @@ const Category = () => {
         
     }
     getItems()
-    setTimeout(() => {
-        setLoading(false);
-    }, 1000);
+    
+    setLoading(false);
+    
     }, [category])
     console.log(items)
 

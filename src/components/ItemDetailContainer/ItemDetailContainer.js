@@ -42,7 +42,7 @@ const ItemDetailContainer = () => {
         setLoading(false);
     }, 1000);
     }, [id])
-    console.log(item)
+    
 
    return ( loading ? (
    

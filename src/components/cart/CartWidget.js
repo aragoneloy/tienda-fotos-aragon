@@ -8,12 +8,12 @@ import { Link } from 'react-router-dom';
 
 
 const CartWidget = () => {
-    const { cartItems } = useContext(CartContext);
+    const { cartQuantity } = useContext(CartContext);
 
     
     return ( 
         <>
-            <Link to='/cart'><Button><MdShoppingCart/>{cartItems.length}</Button></Link>
+            <Link to='/cart'><Button><MdShoppingCart/>{cartQuantity}</Button></Link>
         </>
      );
 }
