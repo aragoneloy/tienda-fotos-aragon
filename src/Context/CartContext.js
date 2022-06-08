@@ -15,7 +15,7 @@ export const CartProvider = ({ children }) => {
         
 
         
-        const itemIndex = cartItems.findIndex(cartItem => cartItem.item[0].id === item[0].id)
+        const itemIndex = cartItems.findIndex(cartItem => cartItem.item.id === item.id)
         
         if(itemIndex === -1) {
         
@@ -64,7 +64,7 @@ export const CartProvider = ({ children }) => {
             let total = 0;
             let quantity = 0;
             data.forEach(item => {
-                total += item.item[0].price * item.count
+                total += item.item.price * item.count
                 quantity += item.count
                 
             })

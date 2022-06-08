@@ -11,16 +11,18 @@ import Box from '@mui/material/Box';
 //react-bootstrap imports
 import Image from 'react-bootstrap/Image'
 
+
+
 import ItemCount from '../ItemCount/ItemCount';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 const ItemDetail = ({ item }) => {
     const { addItem } = useContext(CartContext);
     
-    const [{ name, price, stock, image, description }] = item;
+    const {  name, price, stock, image, description } = item;
     
     const [addedToCart, setAddedToCart] = useState(false);
-
+    
 
 
     const onAdd = (item, count) => {
@@ -49,7 +51,7 @@ const ItemDetail = ({ item }) => {
                         
                         <div>
                             { addedToCart ? 
-                            (<Link to='/cart'><Button variant="outlined" color="success" className='finish-sale-btn'  >Terminar compra</Button></Link>
+                            (<Link to='/cart'><Button variant="outlined" color="success" className='finish-sale-btn'  >Ir al carrito</Button></Link>
                             ) : ( 
                             <ItemCount item={ item } initial={1} stock={stock} onAdd={onAdd}  />) }
                             

@@ -5,7 +5,7 @@ import ItemDetail from '../ItemDetail/ItemDetail'
 
 //firebase
 import { db } from '../../firebase/firebaseConfig'
-import { collection, query, where, getDocs, documentId } from "firebase/firestore";
+import { collection, doc, getDoc } from "firebase/firestore";
 //React-bs components
 import Container from 'react-bootstrap/Container';
 import { Row } from 'react-bootstrap';
@@ -22,26 +22,48 @@ const ItemDetailContainer = () => {
     const { id } = useParams();
      
     
-  
-    
     useEffect(() => {
-       const getItem = async () => {
-            const q = query(collection(db, "products"), where(documentId(), "==", id));
-            const docs = []
-            const querySnapshot = await getDocs(q);
-            querySnapshot.forEach((doc) => {
-                docs.push({...doc.data(), id: doc.id});
-                setItem(docs);
+
+        const getItem = async () => {
+    
+          const q = doc(collection(db, "products"), id);
+    
+          const querySnapshot = await getDoc(q);
+    
+          setItem({ ...querySnapshot.data(), id: querySnapshot.id });
+    
+        };
+    
+        getItem();
+    
+        setTimeout(() => {
+    
+          setLoading(false);
+    
+        }, 1000);
+    
+      }, [id]);
+    
+    
+    
+    // useEffect(() => {
+    //    const getItem = async () => {
+    //         const q = query(collection(db, "products"), where(documentId(), "==", id));
+    //         const docs = []
+    //         const querySnapshot = await getDocs(q);
+    //         querySnapshot.forEach((doc) => {
+    //             docs.push({...doc.data(), id: doc.id});
+    //             setItem(docs);
                 
-            });  
+    //         });  
              
         
-    }
-    getItem()
-    setTimeout(() => {
-        setLoading(false);
-    }, 1000);
-    }, [id])
+    // }
+    // getItem()
+    // setTimeout(() => {
+    //     setLoading(false);
+    // }, 1000);
+    // }, [id])
     
 
    return ( loading ? (

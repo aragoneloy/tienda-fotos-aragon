@@ -13,31 +13,35 @@ const Cart = () => {
     
     return ( cartItems.length !== 0 ? (
         <>
-            <div></div>
+            
             <div className='cart-container'>
                     <h1>Carrito</h1>
                     {cartItems.map(item => {
                         return (
                             <div key={item.item.id}>
-                                <p>Producto: {item.item[0].name}</p>
-                                <p>Precio: {item.item[0].price}</p>
+                                <p>Producto: {item.item.name}</p>
+                                <p>Precio: {item.item.price}</p>
                                 <p>Cantidad: {item.count}</p>
-                                <h4><Button onClick={() => removeItem(item.item)} size='large'><MdDelete/></Button></h4>
+                                <h1><Button onClick={() => removeItem(item.item)} variant='outlined' color='warning'size='small'endIcon={<MdDelete/>}>Eliminar</Button></h1>
                             </div>
                         )} 
                     )}
             </div>
                 <div className='cart-total'>
                     <h2>Total: {cartTotal}</h2>
-                    <h2>Quantity: {cartQuantity}</h2>
+                    <h2>Cantidad: {cartQuantity}</h2>
                     <Button onClick={clearCart}>Vaciar carrito</Button>
                 </div>
-            
+                <div className='checkout-btn'>
+                    <Link to='/checkout'><Button variant='contained' color='primary'>Checkout</Button></Link>
 
-        
+                </div>
+
+
+
         </> ) : (
         <div>
-            <Link to={'/'}><Button variant='contained' >Ir a la tienda</Button></Link>
+            <Link to='/'><Button variant='contained' >Ir a la tienda</Button></Link>
         </div>  )
      
 )}
