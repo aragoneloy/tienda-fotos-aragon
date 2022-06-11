@@ -23,36 +23,40 @@ const styles = {
         paddingTop: '20px',
     },
 }
-const initialState = {
+
+const CheckOut = () => {
+    const { cartItems } = useContext(CartContext)
+    
+    const initialState = {
     buyer: {
     name: '',
     email: '',
-    phone: '',
+    phone: '',  
     },
-    items: [],
+    items: cartItems.map(item => {
+        return {
+            
+            price: item.item.price,
+            name: item.item.name,
+            id: item.item.id,
+            
+        }
+        }),
     date: new Date(),
-    total: 0,
+    total: cartItems.reduce((total, item) => total + item.item.price * item.count, 0),
 }
-const CheckOut = () => {
+    
+
     const [values, setValues] = useState(initialState)
     const [purchaseID, setPurchaseID] = useState('')
-    const { cartItems } = useContext(CartContext)
+    
     
     
     const handleOnChange = (e) => {
         const { name, value } = e.target;
         setValues({ ...values, 
-            buyer: {[name]: value}, 
-            items: cartItems.map(item => {
-                return {
-                    
-                    price: item.item.price,
-                    name: item.item.name,
-                    id: item.item.id,
-                    
-                }
-                }),
-                total: cartItems.reduce((total, item) => total + item.item.price * item.count, 0)
+            buyer: {...values.buyer, [name]: value}, 
+            
                 
             
         })

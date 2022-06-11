@@ -55,9 +55,21 @@ const NavbarComp = () => {
                                     'aria-labelledby': 'basic-button',
                                     }}
                                 >
-                                    <MenuItem onClick={handleClose}>Naturaleza</MenuItem>
-                                    <MenuItem onClick={handleClose}>Street photography</MenuItem>
-                                    <MenuItem onClick={handleClose}>Abstracto</MenuItem>
+                                    <MenuItem onClick={handleClose}>
+                                        <Link to='/category/nature' className='nav-link' >
+                                            Naturaleza
+                                        </Link>
+                                    </MenuItem>
+                                    <MenuItem onClick={handleClose}>
+                                        <Link to='/category/urban' className='nav-link'>
+                                            Street photography
+                                        </Link>
+                                    </MenuItem>
+                                    <MenuItem onClick={handleClose}>
+                                        <Link to='/category/abstract' className='nav-link'>
+                                            Abstracto
+                                        </Link>
+                                    </MenuItem>
                                 </Menu>
                                
                                 </Nav>
@@ -104,17 +116,17 @@ const NavbarComp = () => {
                             }}
                         >
                             <MenuItem onClick={handleClose}>
-                                <Link to='/category/nature'>
+                                <Link to='/category/nature' className='nav-link'>
                                     Naturaleza
                                 </Link>
                             </MenuItem>
                             <MenuItem onClick={handleClose}>
-                                <Link to='/category/urban'>
+                                <Link to='/category/urban' className='nav-link'>
                                     Street photography
                                 </Link>
                             </MenuItem>
                             <MenuItem onClick={handleClose}>
-                                <Link to='/category/abstract'>
+                                <Link to='/category/abstract' className='nav-link'>
                                     Abstracto
                                 </Link>
                             </MenuItem>
