@@ -40,9 +40,12 @@ const Cart = () => {
 
 
         </> ) : (
-        <div>
-            <Link to='/'><Button variant='contained' >Ir a la tienda</Button></Link>
-        </div>  )
+            <div className='cart-container'>
+                <div className='cart-empty'>
+                    <h3>Parece que no hay fotos agregadas al carrito</h3>
+                    <Link to='/'><Button variant='contained' >Ir a la tienda</Button></Link>
+                </div>
+            </div>  )
      
 )}
  

@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import './CheckOut.css'
 import MessageSuccess from '../../components/MessageSuccess/MessageSuccess';
 import { CartContext } from '../../Context/CartContext';
+//react router
+import { Link } from 'react-router-dom';
 //firebase
 import { collection, addDoc } from "firebase/firestore";
 import { db } from '../../firebase/firebaseConfig';
@@ -49,6 +51,7 @@ const CheckOut = () => {
 
     const [values, setValues] = useState(initialState)
     const [purchaseID, setPurchaseID] = useState('')
+   
     
     
     
@@ -60,7 +63,7 @@ const CheckOut = () => {
                 
             
         })
-        console.log(values)
+       
         
     }
     
@@ -83,7 +86,8 @@ const CheckOut = () => {
                 CheckOut
                 <TextField 
                     placeholder='example@example.com' 
-                    style={{margin: 10, width: 400}} 
+                    style={{margin: 10, width: 400}}
+                    required 
                     name='email' 
                     id="outlined-basic" 
                     label="Email" 
@@ -93,7 +97,8 @@ const CheckOut = () => {
                 />
                 <TextField 
                     placeholder='John Doe' 
-                    style={{margin: 10, width: 400}} 
+                    style={{margin: 10, width: 400}}
+                    required 
                     name='name' 
                     id="outlined-basic" 
                     label="Nombre" 
@@ -103,7 +108,8 @@ const CheckOut = () => {
                 />
                 <TextField 
                     placeholder='0341-1234567' 
-                    style={{margin: 10, width: 400}} 
+                    style={{margin: 10, width: 400}}
+                    required 
                     name='phone' 
                     id="outlined-basic" 
                     label="Telefono" 
@@ -113,9 +119,9 @@ const CheckOut = () => {
                     
                 />
                 <Button type='sumbit' variant="contained" color='success' endIcon={<SendIcon />}>
-                    Continuar
+                    Comprar
                 </Button>
-                {purchaseID && <MessageSuccess purchaseID={purchaseID} />}
+                {purchaseID && <div><MessageSuccess purchaseID={purchaseID} /> <Link to='/'><Button variant='contained' >Volver a la tienda</Button></Link></div>}
             </form>
             
         </div>
