@@ -45,6 +45,7 @@ const ItemListContainer = () => {
         return ( loading ? (<Box>    <LinearProgress /> </Box>
         ) : (
             <Container>
+                <h1>Tienda</h1>
                 <Row >
                    <ItemList items={items}/>
                 </Row>

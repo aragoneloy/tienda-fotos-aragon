@@ -44,27 +44,7 @@ const ItemDetailContainer = () => {
     
       }, [id]);
     
-    
-    
-    // useEffect(() => {
-    //    const getItem = async () => {
-    //         const q = query(collection(db, "products"), where(documentId(), "==", id));
-    //         const docs = []
-    //         const querySnapshot = await getDocs(q);
-    //         querySnapshot.forEach((doc) => {
-    //             docs.push({...doc.data(), id: doc.id});
-    //             setItem(docs);
-                
-    //         });  
-             
-        
-    // }
-    // getItem()
-    // setTimeout(() => {
-    //     setLoading(false);
-    // }, 1000);
-    // }, [id])
-    
+     
 
    return ( loading ? (
    

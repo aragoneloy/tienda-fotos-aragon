@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useState, useEffect } from 'react';
-
+import './Category.css';
 
 import Item from '../../components/Item/Item';
 //firebase
@@ -39,26 +39,30 @@ const Category = () => {
     setLoading(false);
     
     }, [category])
-    console.log(items)
+    
+    let cat = category.charAt(0).toUpperCase() + category.slice(1);
 
    return ( loading ? (
    
    <Box><LinearProgress/></Box>
    
    ) : (
-        <div>
-    {items.map(item => {
-        return (
-         <Link 
-         to={`/detail/${item.id}`}
-         key={item.id} 
-         style={{textDecoration: 'none'}}
-         >
-           <Item  item={item} />
-         </Link>
-     )} )}
-    </div>
-
+    <>
+        <h2 className='category'>{cat}</h2>
+        <div className='item-list'>
+            
+            {items.map(item => {
+                return (
+                <Link 
+                to={`/detail/${item.id}`}
+                key={item.id} 
+                style={{textDecoration: 'none'}}
+                >
+                <Item  item={item} />
+                </Link>
+            )} )}
+        </div>
+    </>
 )
 )
 }

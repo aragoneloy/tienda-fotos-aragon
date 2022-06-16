@@ -13,7 +13,7 @@ const Item = ({item}) => {
 
   return (
     
-    <Card sx={{ maxWidth: 345 }} className="item">
+    <Card sx={{ maxWidth: 345, minWidth: 300 }} className="item">
       <CardActionArea>
         <CardMedia
           component="img"
