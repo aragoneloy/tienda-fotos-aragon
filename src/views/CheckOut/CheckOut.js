@@ -25,9 +25,9 @@ const styles = {
         paddingTop: '20px',
     },
 }
-
+    
 const CheckOut = () => {
-    const { cartItems } = useContext(CartContext)
+    const { cartItems, clearCart } = useContext(CartContext)
     
     const initialState = {
     buyer: {
@@ -52,6 +52,8 @@ const CheckOut = () => {
     const [values, setValues] = useState(initialState)
     const [purchaseID, setPurchaseID] = useState('')
    
+   
+
     
     
     
@@ -78,22 +80,25 @@ const CheckOut = () => {
         
         setPurchaseID(docRef.id)
         setValues(initialState)
+        clearCart()
         
     }
     return (
         <div style={styles.containerCheckout}>
             <form className='form-container' onSubmit={onSubmit}>
-                CheckOut
+                Ultimo paso
                 <TextField 
                     placeholder='example@example.com' 
                     style={{margin: 10, width: 400}}
                     required 
-                    name='email' 
+                    name='email'
+                    type="email" 
                     id="outlined-basic" 
                     label="Email" 
                     variant="outlined"
                     value={values.buyer.email}
                     onChange={handleOnChange}
+                    
                 />
                 <TextField 
                     placeholder='John Doe' 
