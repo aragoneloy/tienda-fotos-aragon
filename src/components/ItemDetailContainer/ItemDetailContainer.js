@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState, useEffect, useContext } from 'react';
-import { ItemsContext } from '../../Context/ItemContext';
+import { useState, useEffect } from 'react';
+
 import ItemDetail from '../ItemDetail/ItemDetail'
 
 //firebase

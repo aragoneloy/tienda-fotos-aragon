@@ -1,10 +1,18 @@
 import React from 'react';
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import "././cart.css"
 import { CartContext } from '../../Context/CartContext';
+
+//material ui
 import { MdDelete } from 'react-icons/md';
 import { Button } from '@mui/material';
+import CardMedia from '@mui/material/CardMedia';
+import {CardContent} from '@mui/material';
+import {Typography} from '@mui/material';
+import Card from '@mui/material/Card'; 
+import CardActions from '@mui/material/CardActions';
+
 const Cart = () => {
     const { cartItems, removeItem, clearCart, cartTotal, cartQuantity } = useContext(CartContext);
     
@@ -19,23 +27,64 @@ const Cart = () => {
                     {cartItems.map(item => {
                         return (
                             <div key={item.item.id}>
-                                <p>Producto: {item.item.name}</p>
-                                <p>Precio: {item.item.price}</p>
-                                <p>Cantidad: {item.count}</p>
-                                <h1><Button onClick={() => removeItem(item.item)} variant='outlined' color='warning'size='small'endIcon={<MdDelete/>}>Eliminar</Button></h1>
+                                <Card sx={{ 
+                                        width: '70vw',
+                                        height: '15vh',
+                                        margin: '10px', 
+                                        display: 'flex',
+                                        flexDirection: 'row',
+
+                                        
+                                        }}>
+                                    <CardMedia
+                                        component="img"
+                                        alt={item.item.name}
+                                        height="140"
+                                        image={item.item.image}
+                                        sx={{ 
+                                            maxWidth: 150,
+                                            
+                                            }}
+                                    />
+                                    <CardContent sx={{ 
+                                            display: 'flex',
+                                            flexGrow: 1,
+                                            justifyContent: 'space-around',
+                                            alignItems: 'center',
+                                            
+                                            }}>
+                                        <Typography  variant="h6" component="div">
+                                            {item.item.name}
+                                        </Typography>
+                                        <Typography variant="body1" >
+                                            ${item.item.price}
+                                        </Typography>
+                                        <Typography variant="body1" >
+                                            Cantidad: {item.count}
+                                        </Typography>
+                                    </CardContent>
+                                    <CardActions>
+                                        <Button onClick={() => removeItem(item.item)} variant='outlined' color='warning'size='small'endIcon={<MdDelete/>}>Quitar</Button>
+                                        
+                                    </CardActions>
+                                    </Card>
+                               
+                                
+                                
                             </div>
                         )} 
                     )}
+                <Button variant='contained' color='error' size='small' onClick={clearCart}>Vaciar carrito</Button>
             </div>
+            
+                
                 <div className='cart-total'>
-                    <h2>Total: {cartTotal}</h2>
-                    <h2>Cantidad: {cartQuantity}</h2>
-                    <Button onClick={clearCart}>Vaciar carrito</Button>
+                    <h4>Total de compra ${cartTotal}</h4>
+                    <h4>Cantidad de articulos: {cartQuantity}</h4>
+                    <Link to='/checkout'><Button variant='contained' color='primary'>Continuar compra</Button></Link> 
+                    
                 </div>
-                <div className='checkout-btn'>
-                    <Link to='/checkout'><Button variant='contained' color='primary'>Checkout</Button></Link>
-
-                </div>
+                
 
 
 

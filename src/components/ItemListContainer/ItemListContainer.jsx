@@ -13,7 +13,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 
 //firebase
 import { db } from '../../firebase/firebaseConfig'
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, getDocs } from "firebase/firestore";
 
 const ItemListContainer = () => {
     const { items, setItems } = useContext(ItemsContext);
@@ -37,7 +37,7 @@ const ItemListContainer = () => {
     setTimeout(() => {
         setLoading(false);
     }, 1000);
-    }, [])
+    }, [setItems]);
 
         
         
