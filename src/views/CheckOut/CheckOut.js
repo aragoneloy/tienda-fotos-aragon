@@ -86,7 +86,7 @@ const CheckOut = () => {
     return (
         <div style={styles.containerCheckout}>
             <form className='form-container' onSubmit={onSubmit}>
-                Ultimo paso
+                <h4>Ultimo paso</h4>
                 <TextField 
                     placeholder='example@example.com' 
                     style={{margin: 10, width: 400}}

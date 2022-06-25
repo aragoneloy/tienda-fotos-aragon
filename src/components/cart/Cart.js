@@ -6,7 +6,7 @@ import { CartContext } from '../../Context/CartContext';
 
 //material ui
 import { MdDelete } from 'react-icons/md';
-import { Button } from '@mui/material';
+import { Button, Paper } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
 import {CardContent} from '@mui/material';
 import {Typography} from '@mui/material';
@@ -27,10 +27,11 @@ const Cart = () => {
                     {cartItems.map(item => {
                         return (
                             <div key={item.item.id}>
+                                <Paper elevation={4}>
                                 <Card sx={{ 
                                         width: '70vw',
                                         height: '15vh',
-                                        margin: '10px', 
+                                        margin: '15px', 
                                         display: 'flex',
                                         flexDirection: 'row',
 
@@ -57,10 +58,10 @@ const Cart = () => {
                                             {item.item.name}
                                         </Typography>
                                         <Typography variant="body1" >
-                                            ${item.item.price}
+                                            Cantidad: {item.count}
                                         </Typography>
                                         <Typography variant="body1" >
-                                            Cantidad: {item.count}
+                                            ${item.item.price}
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
@@ -70,7 +71,7 @@ const Cart = () => {
                                     </Card>
                                
                                 
-                                
+                            </Paper>    
                             </div>
                         )} 
                     )}

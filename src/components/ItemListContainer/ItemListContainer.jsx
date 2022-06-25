@@ -31,12 +31,10 @@ const ItemListContainer = () => {
             setItems(docs);
             
         });   
-        console.log(docs)
+        setLoading(false);
     }
     getItems()
-    setTimeout(() => {
-        setLoading(false);
-    }, 1000);
+    
     }, [setItems]);
 
         

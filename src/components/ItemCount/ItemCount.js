@@ -22,7 +22,7 @@ const ItemCount = ({item, stock, initial, onAdd}) => {
         
     }
     const minusClick = () => {
-        setCount(count < 1 ? count : count - 1)
+        setCount(count < 2 ? count : count - 1)
   
         
     }
